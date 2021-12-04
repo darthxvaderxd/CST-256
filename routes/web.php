@@ -13,23 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 Route::get(
-    '/login',
+    '/',
     [
-        \App\Http\Controllers\UserController::class,
-        'login',
-    ]
+        \App\Http\Controllers\HomeController::class,
+        'index',
+    ],
 );
 
 Route::get(
     '/register',
     [
-        \App\Http\Controllers\UserController::class,
+        \App\Http\Controllers\RegistrationController::class,
         'register',
     ]
 );
@@ -37,7 +32,31 @@ Route::get(
 Route::post(
     '/register',
     [
-        \App\Http\Controllers\UserController::class,
+        \App\Http\Controllers\RegistrationController::class,
         'create',
+    ]
+);
+
+Route::get(
+    '/logout',
+    [
+        \App\Http\Controllers\LoginController::class,
+        'logout',
+    ]
+);
+
+Route::get(
+    '/login',
+    [
+        \App\Http\Controllers\LoginController::class,
+        'login',
+    ]
+);
+
+Route::post(
+    '/login',
+    [
+        \App\Http\Controllers\LoginController::class,
+        'doLogin',
     ]
 );
