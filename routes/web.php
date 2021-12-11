@@ -93,3 +93,35 @@ Route::post(
         'create',
     ]
 );
+
+Route::get(
+    '/admin/users',
+    [
+        \App\Http\Controllers\AdminUserManagmentController::class,
+        'index',
+    ]
+);
+
+Route::get(
+    '/admin/users/edit',
+    [
+        \App\Http\Controllers\AdminUserManagmentController::class,
+        'editUser',
+    ]
+);
+
+Route::post(
+    '/admin/users/edit',
+    [
+        \App\Http\Controllers\AdminUserManagmentController::class,
+        'updateUser',
+    ]
+);
+
+Route::get(
+    '/admin/users/delete',
+    [
+        \App\Http\Controllers\AdminUserManagmentController::class,
+        'deleteUser',
+    ]
+);

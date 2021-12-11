@@ -33,7 +33,8 @@ class LoginController extends Controller
          * } */
         // so I did this instead
         $user = User::where('username', $request['username'])->first();
-        if ($user->password === $request['password']) {
+
+        if ($user->password === $request['password'] && $user->active) {
             Auth::login($user);
             return redirect('/');
         }

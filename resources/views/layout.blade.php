@@ -66,6 +66,21 @@
             margin-bottom: 0.8rem;
         }
         .right { text-align: right; }
+        .odd { background-color: #eee; }
+        .red {
+            border: 0.1rem solid #222;
+            border-radius: 0.8rem;
+            background-color: red;
+            color: white;
+            text-align: center;
+        }
+        .green {
+            border: 0.1rem solid #222;
+            border-radius: 0.8rem;
+            background-color: green;
+            color: white;
+            text-align: center;
+        }
     </style>
 
     <!-- scripts -->
