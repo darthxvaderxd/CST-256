@@ -60,3 +60,36 @@ Route::post(
         'doLogin',
     ]
 );
+
+Route::get(
+    '/profile',
+    [
+        \App\Http\Controllers\ProfileController::class,
+        'index',
+    ]
+);
+
+Route::post(
+    '/profile',
+    [
+        \App\Http\Controllers\ProfileController::class,
+        'create',
+    ]
+);
+
+
+Route::get(
+    '/job_history',
+    [
+        \App\Http\Controllers\JobHistoryController::class,
+        'index',
+    ]
+);
+
+Route::post(
+    '/job_history',
+    [
+        \App\Http\Controllers\JobHistoryController::class,
+        'create',
+    ]
+);

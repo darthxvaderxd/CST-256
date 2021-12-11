@@ -1,4 +1,9 @@
 @extends('layout')
+
+@section('title')
+    Welcome!
+@endsection
+
 @section('content')
     <h2>Welcome</h2>
     @if(!empty($user))

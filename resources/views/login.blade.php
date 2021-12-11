@@ -1,4 +1,9 @@
 @extends('layout')
+
+@section('title')
+    Login
+@endsection
+
 @section('content')
     <h2>Login</h2>
     <form method="POST" action="/login">

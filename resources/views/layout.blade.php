@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>Welcome!</title>
+    <title>MyApp - @yield('title')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Sheets -->
@@ -16,12 +16,18 @@
             color: #222;
             padding: 1.6rem;
             border: .1rem solid #222;
-            max-width: 30rem;
+            max-width: 50rem;
             margin-left: 1.6rem;
         }
         input[type=text], input[type=email], input[type=password], button[type=submit] {
-            width: 100%;
+            border: 0.1rem solid #222;
             font-size: 1.2rem;
+            width: 100%;
+        }
+        textarea {
+            border: 0.1rem solid #222;
+            height: 17.5rem;
+            width: 100%;
         }
         label { font-weight: bolder; }
         .errors { color: red; }
@@ -31,6 +37,35 @@
         }
         a { color: #ffa500; }
         .content{ padding: 1.6rem; }
+        input[type=button], .button {
+            border: 0.1rem solid #222;
+            border-radius: 0.4rem;
+            background-color: dodgerblue;
+            color: #fff;
+        }
+        .button { padding: 0.4rem; }
+        .skill {
+            background-color: dodgerblue;
+            border: 0.1rem solid navy;
+            border-radius: 0.8rem;
+            color: #fff;
+            margin-left: 0.4rem;
+            padding: 0.4rem;
+        }
+        #skills-div {
+            padding-bottom: 0.8rem;
+        }
+        .job-history {
+            background-color: #ccf;
+            border-radius: 1.6rem;
+            color: #222;
+            padding: 1.6rem;
+            border: .1rem solid #222;
+            max-width: 50rem;
+            margin-left: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+        .right { text-align: right; }
     </style>
 
     <!-- scripts -->
@@ -68,7 +103,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/profile">Profile<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/job_history">Job History<span class="sr-only"></span></a>
                 </li>
             </ul>
         </div>

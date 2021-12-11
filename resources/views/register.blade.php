@@ -1,4 +1,9 @@
 @extends('layout')
+
+@section('title')
+    Register
+@endsection
+
 @section('content')
     <h2>Register</h2>
     <form method="POST" action="/register">
