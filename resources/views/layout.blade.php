@@ -105,12 +105,18 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home<span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/profile">Profile<span class="sr-only"></span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/job_history">Job History<span class="sr-only"></span></a>
-                </li>
+                @if ($user->role_id === 1)
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/profile">Profile<span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/job_history">Job History<span class="sr-only"></span></a>
+                    </li>
+                @elseif ($user->role_id === 3)
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/admin/users">User Management<span class="sr-only"></span></a>
+                    </li>
+                @endif
             </ul>
         </div>
     </nav>

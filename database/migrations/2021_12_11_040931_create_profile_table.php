@@ -41,5 +41,6 @@ class CreateProfileTable extends Migration
     public function down()
     {
         Schema::dropIfExists('profile');
+        Schema::dropIfExists('job_history');
     }
 }

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class RegistrationController extends Controller
@@ -22,12 +23,15 @@ class RegistrationController extends Controller
             'password'   => 'required|alphaNum|min:3',
         ]);
 
+        $role = Role::where('role', 'user')->first();
+
         $user = User::create([
             'first_name' => $request['first_name'],
             'last_name'  => $request['last_name'],
             'username'   => $request['username'],
             'email'      => $request['email'],
             'password'   => $request['password'],
+            'role_id'    => $role->id,
         ]);
 
         return redirect()->to('/login?username='.$request['username']);
