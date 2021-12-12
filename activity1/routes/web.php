@@ -34,3 +34,28 @@ Route::get('/test2', [
     \App\Http\Controllers\TestController::class,
     'test2',
 ]);
+
+Route::get('/askme', [
+    \App\Http\Controllers\WhatsMyNameController::class,
+    'index',
+]);
+
+Route::post('/whoami', [
+    \App\Http\Controllers\WhatsMyNameController::class,
+    'post',
+]);
+
+Route::get('/login', [
+    \App\Http\Controllers\LoginController::class,
+    'index',
+]);
+
+Route::get('/login2', [
+    \App\Http\Controllers\LoginController::class,
+    'index2',
+]);
+
+Route::post('/dologin', [
+    \App\Http\Controllers\LoginController::class,
+    'login',
+]);
