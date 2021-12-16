@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 
 class JobHistoryController extends Controller {
     public function index(Request $request) {
+        $isValidUser = $this->isValidUserForRoute();
+        if ($isValidUser !== true) return $isValidUser;
+
         $user = Auth::user();
         $jobHistory = JobHistory::where('user_id', $user->id)->get();
 
@@ -17,10 +20,6 @@ class JobHistoryController extends Controller {
             $job = JobHistory::where('id', $id)->first();
         }
 
-        if (!auth()->check()) {
-            return redirect()->to('/login');
-        }
-
         return view('job_history', [
             'jobHistories' => $jobHistory,
             'user'         => $user,
@@ -29,9 +28,8 @@ class JobHistoryController extends Controller {
     }
 
     public function create(Request $request) {
-        if (!auth()->check()) {
-            return redirect()->to('/login');
-        }
+        $isValidUser = $this->isValidUserForRoute();
+        if ($isValidUser !== true) return $isValidUser;
 
         $user = Auth::user();
         $id = $request['id'] ?? 0;

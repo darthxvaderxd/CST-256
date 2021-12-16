@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Mockery\Exception;
 
 class AdminUserManagmentController extends Controller {
-    protected $user;
-
     public function searchArray($needle, $key, $array) {
         foreach ($array as $value) {
             if ($value[$key] == $needle) {
@@ -17,20 +15,6 @@ class AdminUserManagmentController extends Controller {
             }
         }
         return null;
-    }
-
-    public function validateAdminUser() {
-        if (!auth()->check()) {
-            return redirect()->to('/login');
-        }
-
-        $this->user = Auth::user();
-
-        if ($this->user->role_id !== 3) {
-            return redirect()->to('/');
-        }
-
-        return true;
     }
 
     public function index() {

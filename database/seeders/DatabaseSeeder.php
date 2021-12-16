@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             'email'             => 'user@user.com',
             'email_verified_at' => date('Y-m-d H:i:s'),
             'password'          => 'password',
-            'role_id'           => 3,
+            'role_id'           => 3, // this could be dangerous
         ]);
     }
 }

@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller {
     public function index() {
+        $isValidUser = $this->isValidUserForRoute();
+        if ($isValidUser !== true) return $isValidUser;
+
         $user = Auth::user();
         $profile = Profile::where('user_id', $user->id)->first();
 
-        if (!auth()->check()) {
-            return redirect()->to('/login');
-        }
         return view('profile', [
             'profile' => $profile,
             'user'    => $user,
@@ -20,9 +20,8 @@ class ProfileController extends Controller {
     }
 
     public function create(Request $request) {
-        if (!auth()->check()) {
-            return redirect()->to('/login');
-        }
+        $isValidUser = $this->isValidUserForRoute();
+        if ($isValidUser !== true) return $isValidUser;
 
         $user = Auth::user();
         $profile = Profile::where('user_id', $user->id)->first();
@@ -35,7 +34,7 @@ class ProfileController extends Controller {
 
         if (!$profile) {
             Profile::create([
-                'user_id'     => $request['user_id'],
+                'user_id'     => $user->id,
                 'title'       => $request['title'],
                 'description' => $request['description'],
                 'skills'      => $request['skills'],

@@ -6,16 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 class LoginController extends Controller
 {
     public function login(Request $request) {
-        if (auth()->check()) {
-            return redirect()->to('/');
-        }
+        $isValidUser = $this->isValidUserForRoute();
+        if ($isValidUser === true) return redirect()->to('/');
+
         return view('login', $request->only('username'));
     }
 
@@ -34,7 +30,7 @@ class LoginController extends Controller
         // so I did this instead
         $user = User::where('username', $request['username'])->first();
 
-        if ($user->password === $request['password'] && $user->active) {
+        if ($user && $user->password === $request['password'] && $user->active) {
             Auth::login($user);
             return redirect('/');
         }

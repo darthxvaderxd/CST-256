@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class RegistrationController extends Controller
 {
     public function register(Request $request) {
-        if (auth()->check()) {
-            return redirect()->to('/');
-        }
+        $isValidUser = $this->isValidUserForRoute();
+        if ($isValidUser !== true) return redirect()->to('/');
+
         return view('register');
     }
 
