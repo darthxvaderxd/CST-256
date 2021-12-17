@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class JobHistory extends Model
+class Education extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'job_history';
+    protected $table = 'education';
     public $timestamps = false;
 
     /**
@@ -22,7 +22,6 @@ class JobHistory extends Model
     protected $fillable = [
         'user_id',
         'title',
-        'company_name',
         'description',
         'start_date',
         'end_date',

@@ -95,6 +95,22 @@ Route::post(
 );
 
 Route::get(
+    '/education',
+    [
+        \App\Http\Controllers\EducationController::class,
+        'index',
+    ]
+);
+
+Route::post(
+    '/education',
+    [
+        \App\Http\Controllers\EducationController::class,
+        'create',
+    ]
+);
+
+Route::get(
     '/admin/users',
     [
         \App\Http\Controllers\AdminUserManagmentController::class,

@@ -11,7 +11,9 @@ class JobHistoryController extends Controller {
         if ($isValidUser !== true) return $isValidUser;
 
         $user = Auth::user();
-        $jobHistory = JobHistory::where('user_id', $user->id)->get();
+        $jobHistory = JobHistory::where('user_id', $user->id)
+            ->orderBy('start_date', 'DESC')
+            ->get();
 
         $id = $request['id'] ?? 0;
         $job = null;
@@ -38,22 +40,25 @@ class JobHistoryController extends Controller {
             ->first();
 
         $this->validate(request(), [
-            'title'       => 'required',
-            'description' => 'required',
-            'start_date'  => 'required',
+            'title'        => 'required',
+            'description'  => 'required',
+            'start_date'   => 'required',
+            'company_name' => 'required',
         ]);
 
         if (!$jobHistory) {
             JobHistory::create([
-                'user_id'     => $user->id,
-                'title'       => $request['title'],
-                'description' => $request['description'],
-                'start_date'  => $request['start_date'],
-                'end_date'    => $request['end_date'],
-                'updated_at'  => date('Y-m-d H:i:s'),
+                'user_id'      => $user->id,
+                'title'        => $request['title'],
+                'company_name' => $request['company_name'],
+                'description'  => $request['description'],
+                'start_date'   => $request['start_date'],
+                'end_date'     => $request['end_date'],
+                'updated_at'   => date('Y-m-d H:i:s'),
             ]);
         } else {
             $jobHistory->title = $request['title'];
+            $jobHistory->company_name = $request['company_name'];
             $jobHistory->description = $request['description'];
             $jobHistory->start_date = $request['start_date'];
             $jobHistory->end_date = $request['end_date'];
