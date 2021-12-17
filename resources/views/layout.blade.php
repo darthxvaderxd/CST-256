@@ -19,7 +19,7 @@
             max-width: 50rem;
             margin-left: 1.6rem;
         }
-        input[type=text], input[type=email], input[type=password], button[type=submit] {
+        select, input[type=text], input[type=email], input[type=password], button[type=submit] {
             border: 0.1rem solid #222;
             font-size: 1.2rem;
             width: 100%;
@@ -133,6 +133,9 @@
                 @elseif ($user->role_id === 3)
                     <li class="nav-item active">
                         <a class="nav-link" href="/admin/users">User Management<span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/admin/jobs">Job Listings<span class="sr-only"></span></a>
                     </li>
                 @endif
             </ul>

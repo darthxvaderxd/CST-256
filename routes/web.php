@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* Index */
 Route::get(
     '/',
     [
@@ -21,6 +22,7 @@ Route::get(
     ],
 );
 
+/* Registration */
 Route::get(
     '/register',
     [
@@ -37,6 +39,7 @@ Route::post(
     ]
 );
 
+/* Authentication */
 Route::get(
     '/logout',
     [
@@ -61,6 +64,7 @@ Route::post(
     ]
 );
 
+/* Profile */
 Route::get(
     '/profile',
     [
@@ -78,6 +82,7 @@ Route::post(
 );
 
 
+/* JobHistory */
 Route::get(
     '/job_history',
     [
@@ -94,6 +99,7 @@ Route::post(
     ]
 );
 
+/* Education */
 Route::get(
     '/education',
     [
@@ -110,6 +116,7 @@ Route::post(
     ]
 );
 
+/* Admin User Managment */
 Route::get(
     '/admin/users',
     [
@@ -139,5 +146,38 @@ Route::get(
     [
         \App\Http\Controllers\AdminUserManagmentController::class,
         'deleteUser',
+    ]
+);
+
+/* Admin Job Listing */
+Route::get(
+    '/admin/jobs',
+    [
+        \App\Http\Controllers\AdminJobListingController::class,
+        'index',
+    ]
+);
+
+Route::get(
+    '/admin/jobs/edit',
+    [
+        \App\Http\Controllers\AdminJobListingController::class,
+        'editJobListing',
+    ]
+);
+
+Route::post(
+    '/admin/jobs/edit',
+    [
+        \App\Http\Controllers\AdminJobListingController::class,
+        'updateJobListing',
+    ]
+);
+
+Route::get(
+    '/admin/jobs/delete',
+    [
+        \App\Http\Controllers\AdminJobListingController::class,
+        'deleteJob',
     ]
 );
