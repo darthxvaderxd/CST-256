@@ -25,6 +25,11 @@ Route::get('/hello_view', function () {
     return  view('hello');
 });
 
+Route::get('/customer', [
+    \App\Http\Controllers\TestController::class,
+    'testCustomerProduct',
+]);
+
 Route::get('/test', [
     \App\Http\Controllers\TestController::class,
     'test',
@@ -57,5 +62,15 @@ Route::get('/login2', [
 
 Route::post('/dologin', [
     \App\Http\Controllers\LoginController::class,
+    'login',
+]);
+
+Route::get('/login3', [
+    \App\Http\Controllers\LoginController3::class,
+    'index',
+]);
+
+Route::post('/dologin3', [
+    \App\Http\Controllers\LoginController3::class,
     'login',
 ]);
