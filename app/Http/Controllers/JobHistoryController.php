@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobHistory;
+use App\Models\Group;
+use App\Models\GroupUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,6 +47,25 @@ class JobHistoryController extends Controller {
             'start_date'   => 'required',
             'company_name' => 'required',
         ]);
+
+        // if there isn't an affinity group for this company create it
+        $group = Group::where('group', strtolower($request['company_name']))
+            ->first();
+        if (!$group) {
+            Group::create([
+                'group' => $request['company_name'],
+            ]);
+
+            $group = Group::where('group', strtolower($request['company_name']))
+                ->first();
+
+            if ($group) {
+                GroupUser::create([
+                    'group_id' => $group->id,
+                    'user_id'  => $user->id,
+                ]);
+            }
+        }
 
         if (!$jobHistory) {
             JobHistory::create([

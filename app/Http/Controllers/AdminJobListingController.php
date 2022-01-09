@@ -2,10 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobListing;
-use App\Models\Role;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Mockery\Exception;
 
 class AdminJobListingController extends Controller {

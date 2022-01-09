@@ -2,7 +2,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Education;
-use App\Models\JobHistory;
+use App\Models\Group;
+use App\Models\GroupUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,6 +46,25 @@ class EducationController extends Controller {
             'description' => 'required',
             'start_date'  => 'required',
         ]);
+
+        // if there isn't an affinity group for this company create it
+        $group = Group::where('group', strtolower($request['title']))
+            ->first();
+        if (!$group) {
+            Group::create([
+                'group' => $request['title'],
+            ]);
+
+            $group = Group::where('group', strtolower($request['title']))
+                ->first();
+
+            if ($group) {
+                GroupUser::create([
+                    'group_id' => $group->id,
+                    'user_id'  => $user->id,
+                ]);
+            }
+        }
 
         if (!$education) {
             Education::create([

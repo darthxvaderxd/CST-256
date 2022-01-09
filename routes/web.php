@@ -181,3 +181,60 @@ Route::get(
         'deleteJob',
     ]
 );
+
+/* Affinity Groups */
+Route::get(
+    '/groups',
+    [
+        \App\Http\Controllers\GroupController::class,
+        'index',
+    ]
+);
+
+Route::post(
+    '/groups',
+    [
+        \App\Http\Controllers\GroupController::class,
+        'index',
+    ]
+);
+
+Route::get(
+    '/group',
+    [
+        \App\Http\Controllers\GroupController::class,
+        'view',
+    ]
+);
+
+Route::post(
+    '/group/create',
+    [
+        \App\Http\Controllers\GroupController::class,
+        'create',
+    ]
+);
+
+Route::post(
+    '/group',
+    [
+        \App\Http\Controllers\GroupController::class,
+        'join',
+    ]
+);
+
+Route::post(
+    '/group/leave',
+    [
+        \App\Http\Controllers\GroupController::class,
+        'leave',
+    ]
+);
+
+Route::get(
+    '/groups/my',
+    [
+        \App\Http\Controllers\GroupController::class,
+        'userGroups',
+    ]
+);

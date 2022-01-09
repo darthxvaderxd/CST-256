@@ -18,9 +18,10 @@ class Controller extends BaseController
         if (!auth()->check()) {
             return redirect()->to('/login');
         }
-        if ($isAdminCheck) {
-            $this->user = Auth::user();
 
+        $this->user = Auth::user();
+
+        if ($isAdminCheck) {
             if ($this->user->role_id !== 3) { // should be updated to compare to admin role itself
                 return redirect()->to('/'); // redirect to home page
             }
