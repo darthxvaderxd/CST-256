@@ -58,13 +58,13 @@ class JobHistoryController extends Controller {
 
             $group = Group::where('group', strtolower($request['company_name']))
                 ->first();
+        }
 
-            if ($group) {
-                GroupUser::create([
-                    'group_id' => $group->id,
-                    'user_id'  => $user->id,
-                ]);
-            }
+        if ($group) {
+            GroupUser::create([
+                'group_id' => $group->id,
+                'user_id'  => $user->id,
+            ]);
         }
 
         if (!$jobHistory) {
