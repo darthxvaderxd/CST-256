@@ -238,3 +238,28 @@ Route::get(
         'userGroups',
     ]
 );
+
+/* Job listings */
+Route::get(
+    '/job_listings',
+    [
+        \App\Http\Controllers\JobListingController::class,
+        'index',
+    ]
+);
+
+Route::get(
+    '/job_listing',
+    [
+        \App\Http\Controllers\JobListingController::class,
+        'view',
+    ]
+);
+
+Route::get(
+    '/job_listing/apply',
+    [
+        \App\Http\Controllers\JobListingController::class,
+        'apply',
+    ]
+);

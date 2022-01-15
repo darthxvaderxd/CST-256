@@ -29,16 +29,18 @@
                 <th>&nbsp;</th>
             </tr>
             @foreach($job_listings as $job_listing)
-                <tr>{{ $job_listing->company_name ?? '' }}</tr>
-                <tr>{{ $job_listing->job_title ?? '' }}</tr>
                 <tr>
-                    ${{ $job_listing['amount'] }}
-                    @if ($job_listing['pay_type'] === 1)
-                        / hr
-                    @endif
-                </tr>
-                <tr>
-                    <a class="button" href="/job_listing?id={{ $job_listing->id ?? 0 }}">View</a>
+                    <td>{{ $job_listing->company_name ?? '' }}</td>
+                    <td>{{ $job_listing->job_title ?? '' }}</td>
+                    <td>
+                        ${{ $job_listing['amount'] }}
+                        @if ($job_listing['pay_type'] === 1)
+                            / hr
+                        @endif
+                    </td>
+                    <td>
+                        <a class="button" href="/job_listing?id={{ $job_listing->id ?? 0 }}">View</a>
+                    </td>
                 </tr>
             @endforeach
         </table>
