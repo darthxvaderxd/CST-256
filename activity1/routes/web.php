@@ -74,3 +74,5 @@ Route::post('/dologin3', [
     \App\Http\Controllers\LoginController3::class,
     'login',
 ]);
+
+Route::resource('/usersrest', \App\Http\Controllers\UsersRestController::class);

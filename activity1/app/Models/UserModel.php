@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class UserModel extends Authenticatable
+class UserModel extends Authenticatable implements \JsonSerializable
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = 'activity_users';
@@ -23,4 +23,8 @@ class UserModel extends Authenticatable
         'username',
         'password',
     ];
+
+    public function jsonSerialize() {
+        return get_object_vars($this);
+    }
 }

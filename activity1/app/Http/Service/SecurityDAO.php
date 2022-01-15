@@ -23,4 +23,13 @@ class SecurityDAO {
             return false;
         }
     }
+
+    static public function findAllUsers() {
+        return UserModel::all();
+    }
+
+    static public function getUserById($id) {
+        return UserModel::where('id', $id)
+            ->first();
+    }
 }
