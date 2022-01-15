@@ -9,12 +9,15 @@ class RegistrationController extends Controller
 {
     public function register(Request $request) {
         $isValidUser = $this->isValidUserForRoute();
-        if ($isValidUser !== true) return redirect()->to('/');
+        if ($isValidUser === true) return redirect()->to('/');
 
         return view('register');
     }
 
     public function create(Request $request) {
+        $isValidUser = $this->isValidUserForRoute();
+        if ($isValidUser === true) return redirect()->to('/');
+
         $this->validate(request(), [
             'first_name' => 'required',
             'last_name'  => 'required',
