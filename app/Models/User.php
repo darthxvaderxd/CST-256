@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements \JsonSerializable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -45,6 +45,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'active' => 'boolean',
     ];
+
+    public function jsonSerialize() {
+        $json_string = json_encode($this->attributes);
+        $attribs = json_decode($json_string);
+        unset($attribs->password); // we don't need to be handing that out
+        return get_object_vars($attribs);
+    }
 
 //    /**
 //     * Add a mutator to ensure hashed passwords

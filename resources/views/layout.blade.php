@@ -136,6 +136,9 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/groups/my">My Affinity Groups<span class="sr-only"></span></a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/job_listings">Jobs<span class="sr-only"></span></a>
+                    </li>
                 @elseif ($user->role_id === 3)
                     <li class="nav-item active">
                         <a class="nav-link" href="/admin/users">User Management<span class="sr-only"></span></a>

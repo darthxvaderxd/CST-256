@@ -263,3 +263,15 @@ Route::get(
         'apply',
     ]
 );
+
+// Rest API stuff
+
+Route::resource(
+    '/api/users',
+    \App\Http\RestControllers\ProfileController::class,
+);
+
+Route::resource(
+    '/api/jobs',
+    \App\Http\RestControllers\JobListingController::class,
+);

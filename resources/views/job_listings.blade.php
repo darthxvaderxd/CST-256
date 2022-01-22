@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <h2>My Profile</h2>
+    <h2>Job Listings</h2>
     <form method="GET" action="/job_listings">
         {{ csrf_field() }}
         <div class="form-group">
@@ -20,7 +20,7 @@
 
     <br />
 
-    @if (!empty($job_listings))
+    @if (!empty($job_listings) && sizeof($job_listings) > 0)
         <table class="table">
             <tr>
                 <th>Company</th>
