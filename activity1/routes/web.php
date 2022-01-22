@@ -76,3 +76,7 @@ Route::post('/dologin3', [
 ]);
 
 Route::resource('/usersrest', \App\Http\Controllers\UsersRestController::class);
+
+Route::get('/', function() {
+    return view('index');
+});
